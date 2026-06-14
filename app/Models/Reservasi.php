@@ -25,18 +25,28 @@ class Reservasi extends Model
         return $this->hasMany(DetailReservasi::class);
     }
     public function pembayaran()
-{
-    return $this->hasMany(Pembayaran::class);
-}
+    {
+        return $this->hasMany(Pembayaran::class);
+    }
 
-public function user()
-{
-    return $this->belongsTo(User::class);
-}
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+    public function paket()
+    {
+        // Karena nama modelnya 'Package' tapi nama tabel database-nya 'paket_poto' dengan FK 'paket_id'
+        return $this->belongsTo(Package::class, 'paket_id');
+    }
 
-public function getDisplayNameAttribute()
-{
-    return 'Reservasi #' . $this->id .
-           ' - ' . $this->tanggal_reservasi;
-}
+    public function studio()
+    {
+        return $this->belongsTo(Studio::class, 'studio_id');
+    }
+
+    public function getDisplayNameAttribute()
+    {
+        return 'Reservasi #' . $this->id .
+            ' - ' . $this->tanggal_reservasi;
+    }
 }

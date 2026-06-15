@@ -6,8 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class DetailReservasi extends Model
 {
-    protected $table = 'detail_reservasi';
-
+    protected $table = 'detail_reservasis';
+    protected $guarded = [];
     protected $fillable = [
         'reservasi_id',
         'fotografer_id',

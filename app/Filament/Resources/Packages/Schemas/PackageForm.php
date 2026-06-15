@@ -24,11 +24,6 @@ class PackageForm
                     ->numeric()
                     ->required(),
 
-                TextInput::make('durasi')
-                    ->label('Duration')
-                    ->required()
-                    ->maxLength(50),
-
                 Textarea::make('deskripsi')
                     ->label('Description')
                     ->rows(4),

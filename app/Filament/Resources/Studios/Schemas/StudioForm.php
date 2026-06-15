@@ -22,6 +22,13 @@ class StudioForm
                     ->numeric()
                     ->required(),
 
+                    TextInput::make('harga_per_jam')
+    ->label('Harga Per Jam')
+    ->numeric()
+    ->required() // Menghindari eror database kosong karena wajib diisi di form
+    ->prefix('Rp')
+    ->placeholder('Masukkan harga sewa per jam...'),
+    
                 Textarea::make('deskripsi')
                     ->rows(4),
 

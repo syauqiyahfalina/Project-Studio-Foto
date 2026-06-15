@@ -3,40 +3,43 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Reservasi extends Model
 {
-    protected $table = 'reservasi';
-
     protected $fillable = [
-        'user_id',
-        'paket_id',
-        'studio_id',
-        'fotografer_id',
-        'tanggal_reservasi',
-        'jam_mulai',
-        'jam_selesai',
-        'total_harga',
-        'status',
-    ];
+    'user_id',
+    'fotografer_id',
+    'paket_id',
+    'studio_id', // <--- Tambahkan ini
+    'tanggal_reservasi',
+    // ... kolom lainnya
+];
+    protected $table = 'reservasis';
+    protected $guarded = [];
 
-    public function detailReservasi()
+    // Relasi User
+    public function user(): BelongsTo
     {
-        return $this->hasMany(DetailReservasi::class);
+        return $this->belongsTo(User::class, 'user_id');
     }
-    public function pembayaran()
-{
-    return $this->hasMany(Pembayaran::class);
-}
 
-public function user()
-{
-    return $this->belongsTo(User::class);
-}
+    // Relasi Fotografer
+    public function fotografer(): BelongsTo
+    {
+        return $this->belongsTo(Fotografer::class, 'fotografer_id');
+    }
 
-public function getDisplayNameAttribute()
-{
-    return 'Reservasi #' . $this->id .
-           ' - ' . $this->tanggal_reservasi;
-}
+    // Relasi Paket
+    public function paket(): BelongsTo
+    {
+        return $this->belongsTo(PaketPoto::class, 'paket_id');
+    }
+
+    // TAMBAHKAN INI UNTUK STUDIO
+    public function studio(): BelongsTo
+    {
+        // Pastikan nama kolom 'studio_id' sesuai dengan database lo
+        return $this->belongsTo(Studio::class, 'studio_id');
+    }
 }

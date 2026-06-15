@@ -6,11 +6,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class Galeri extends Model
 {
-    protected $table = 'galeri';
+    // Hubungkan model ini ke nama tabel jamak yang ada di database lo
+    protected $table = 'galeris';
 
     protected $fillable = [
-        'judul',
-        'kategori',
+        'nama_galeri', // sesuaikan dengan kolom form lo
         'foto',
+        'deskripsi',
     ];
 }

@@ -6,7 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Pembayaran extends Model
 {
-    protected $table = 'pembayaran';
+    // Mengubah nama tabel menjadi plural/jamak ('pembayarans') sesuai standar Laravel & Database lo
+    protected $table = 'pembayarans';
 
     protected $fillable = [
         'reservasi_id',

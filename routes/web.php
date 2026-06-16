@@ -1,8 +1,12 @@
 <?php
 
+<<<<<<< HEAD
 use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\BookingController;
 use App\Http\Controllers\ProfileController;
+=======
+use App\Http\Controllers\PostController;
+>>>>>>> e902be84c3d45456427e60f61d3d203adff88d6d
 use Illuminate\Support\Facades\Route;
 
 // --- Halaman Publik (Landing Page) ---
@@ -31,5 +35,10 @@ Route::middleware(['auth'])->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
+<<<<<<< HEAD
 // Auth Routes (Login/Register/Logout)
 require __DIR__ . '/auth.php';
+=======
+Route::get('/blog', [PostController::class, 'index'])->name('blog.index');
+Route::get('/blog/{slug}', [PostController::class, 'show'])->name('blog.show');
+>>>>>>> e902be84c3d45456427e60f61d3d203adff88d6d

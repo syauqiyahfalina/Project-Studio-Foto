@@ -23,23 +23,19 @@ class Reservasi extends Model
     {
         return $this->belongsTo(User::class, 'user_id');
     }
+    public function pembayaran()
+{
+    return $this->hasMany(Pembayaran::class);
+}
 
-    // Relasi Fotografer
-    public function fotografer(): BelongsTo
-    {
-        return $this->belongsTo(Fotografer::class, 'fotografer_id');
-    }
+public function user()
+{
+    return $this->belongsTo(User::class);
+}
 
-    // Relasi Paket
-    public function paket(): BelongsTo
-    {
-        return $this->belongsTo(PaketPoto::class, 'paket_id');
-    }
-
-    // TAMBAHKAN INI UNTUK STUDIO
-    public function studio(): BelongsTo
-    {
-        // Pastikan nama kolom 'studio_id' sesuai dengan database lo
-        return $this->belongsTo(Studio::class, 'studio_id');
-    }
+public function getDisplayNameAttribute()
+{
+    return 'Reservasi #' . $this->id .
+           ' - ' . $this->tanggal_reservasi;
+}
 }
